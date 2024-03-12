@@ -39,12 +39,35 @@ char* Popular_Line(char text[100][100], int counter_line)
 	return p_char;
 }
 
+void Uppercase_to_Lowercase_Letters_in_File(FILE* p_file_1)
+{
+	FILE* p_file_2 = fopen(R"(F:\file_7.txt)", "w");
+	char c_file;
+
+	do
+	{
+		c_file = fgetc(p_file_1);
+		if (c_file == -1)
+		{
+			break;
+		}
+		if (c_file >= 'A' && c_file <= 'Z')
+		{
+			fprintf(p_file_2, "%c", c_file + ('a' - 'A'));
+		}
+		else
+		{
+			fprintf(p_file_2, "%c", c_file);
+
+		}
+	} while (c_file != EOF);
+}
 
 int main()
 {
 	// Завдання 1
 
-	char text[100][100];
+	/*char text[100][100];
 	int counter = 0;
 
 	FILE* p_file = fopen(R"(F:\file_6.txt)", "r");
@@ -67,7 +90,23 @@ int main()
 
 	cout << p_char << endl;
 
-	delete[] p_char;
+	delete[] p_char;*/
+
+	// Завдання 3
+
+	FILE* p_file_1 = fopen(R"(F:\file_2.txt)", "r");
+
+	if (p_file_1 == nullptr)
+	{
+		cout << "ERROR!\n";
+		return -1;
+	}
+
+	Uppercase_to_Lowercase_Letters_in_File(p_file_1);
+
+	cout << "Done!\n";
+
+
 
 	return 0;
 }
