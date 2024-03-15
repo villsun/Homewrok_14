@@ -97,6 +97,43 @@ void Concatenation_of_Files()
 	} while (str_user_file[0] != '0');
 }
 
+void Only_Letters_and_Numbers()
+{
+	FILE* p_file_1 = fopen(R"(F:\file_2.txt)", "r");
+	FILE* p_file_2 = fopen(R"(F:\file_11.txt)", "w");
+	FILE* p_file_3 = fopen(R"(F:\file_12.txt)", "w");
+	char c_file_1;
+	char c_copy = ' ';
+
+	do
+	{
+		c_file_1 = fgetc(p_file_1);
+
+		if ((c_file_1 == '\n') && ((c_copy >= 'A' && c_copy <= 'Z') || (c_copy >= 'a' && c_copy <= 'z')))
+		{
+			fprintf(p_file_2, "\n");
+		}
+		else if((c_file_1 == '\n') && ((c_copy >= '0' && c_copy <= '9')))
+		{
+			fprintf(p_file_3, "\n");
+
+		}
+
+		if ((c_file_1 >= 'A' && c_file_1 <= 'Z') || (c_file_1 >= 'a' && c_file_1 <= 'z'))
+		{
+			fprintf(p_file_2, "%c", c_file_1);
+		}
+		else if (c_file_1 >= '0' && c_file_1 <= '9')
+		{
+			fprintf(p_file_3, "%c", c_file_1);
+
+		}
+
+		c_copy = c_file_1;
+
+	} while (c_file_1 != EOF);
+}
+
 int main()
 {
 	// Завдання 1
@@ -128,7 +165,8 @@ int main()
 
 	// Завдання 2
 
-	Concatenation_of_Files();
+	/*Concatenation_of_Files();*/
+	/*cout << "Done!\n";*/
 
 	// Завдання 3
 
@@ -144,7 +182,10 @@ int main()
 
 	cout << "Done!\n";*/
 
+	// Завдання 4
 
+	/*Only_Letters_and_Numbers();
+	cout << "Done!\n";*/
 
 	return 0;
 }
