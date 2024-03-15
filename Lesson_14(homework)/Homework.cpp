@@ -63,6 +63,40 @@ void Uppercase_to_Lowercase_Letters_in_File(FILE* p_file_1)
 	} while (c_file != EOF);
 }
 
+
+void Concatenation_of_Files()
+{
+	char str_user_file[200];
+	FILE* p_file_1 = fopen(R"(F:\fres.txt)", "w");
+	char str_user_buffer[200];
+
+	do
+	{
+		cout << "Example F:\\name_file.type\\name_file.type\n0 - to stop\n";
+		cin.getline(str_user_file, 200);
+
+		FILE* p_file_2 = fopen(str_user_file, "r");
+
+		if (str_user_file[0] == '0')
+		{
+			break;
+		}
+
+		if (p_file_2 == nullptr)
+		{
+			cout << "ERROR!\n";
+			continue;
+		}
+
+		while (fgets(str_user_buffer, 200, p_file_2) != nullptr)
+		{
+			fprintf(p_file_1, "%s", str_user_buffer);
+		}
+
+		fprintf(p_file_1, "\n");
+	} while (str_user_file[0] != '0');
+}
+
 int main()
 {
 	// Завдання 1
@@ -92,9 +126,13 @@ int main()
 
 	delete[] p_char;*/
 
+	// Завдання 2
+
+	Concatenation_of_Files();
+
 	// Завдання 3
 
-	FILE* p_file_1 = fopen(R"(F:\file_2.txt)", "r");
+	/*FILE* p_file_1 = fopen(R"(F:\file_2.txt)", "r");
 
 	if (p_file_1 == nullptr)
 	{
@@ -104,7 +142,7 @@ int main()
 
 	Uppercase_to_Lowercase_Letters_in_File(p_file_1);
 
-	cout << "Done!\n";
+	cout << "Done!\n";*/
 
 
 
